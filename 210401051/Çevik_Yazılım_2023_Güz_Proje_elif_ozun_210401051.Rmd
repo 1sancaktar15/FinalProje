@@ -77,4 +77,66 @@ Michael karakterinin "That's what she said" repliğinin bulunduğu satırın bil
 
 
 
+# Q4 : Veri seti ön işlemesi
+
+## Season ve Episode_Number sütunu
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# **Season** ve **Episode_Number** sütunları *factor* tipine dönüştürülmüştür.
+
+# Season ve Episode_Number sütunlarını factor'a dönüştür
+myDF <- myDF %>%
+  mutate(Season = as.factor(Season),
+         Episode_Number = as.factor(Episode_Number))
+
+# Dönüştürülmüş veriyi gözden geçir
+head(myDF)
+
+```
+
+Season ve Episode_Number sütunları *integer* tipinden *POSIXct* tipine dönüştürülmüştür. Ham veri setindeki integer tipinde olan sütunlar factor tipine dönüştürüldü.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# # "All" olarak geçen replikleri çek
+# all_dialogues <- myDF %>%
+#   filter(Character == "All")
+# 
+# # Elde edilen replikleri görüntüle
+# print("All olarak geçen replikler:")
+# print(all_dialogues)
+
+```
+
+Hep bir ağızdan söylenen repliklerin Character sütununda **All** olarak geçtiği satırlar çıkarıldı.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# "All" olarak geçen replikleri çıkar
+myDF <- myDF %>%
+  filter(Character != "All")
+
+# "All" olarak geçen replikleri çıkarılmış veriyi görüntüle
+head(myDF)
+
+```
+
+Michael karakterinin "That's what she said" repliğinin bilgilerini çek ve sezonlarına göre sıklıklarını grafik şeklinde gösterildi.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Gerekli kütüphaneyi yükle
+library(stringr)
+
+# "Line" sütununda "That's what she said" ifadesini içeren satırları filtrele
+thats_what_she_said_lines <- myDF %>%
+  filter(str_detect(tolower(Line), "that's what she said"))
+
+thats_what_she_said_lines
+
+
+
+```
+
+
 
