@@ -1,0 +1,10 @@
+---
+title: "Proje Rapor : Elif Özün 210401051"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Q1 : Problem tanımı
+
+Bu proje, web scraping teknikleri kullanarak bir stream platformu için veri setini düzenlemeyi ve güncellemeyi amaçlamaktadır. Şu anda, platform üzerinde bulunan ünlü meme'lerin hangi bölüm ve repliklerde yer aldığını tespit etmekteyim.
