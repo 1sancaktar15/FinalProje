@@ -236,3 +236,30 @@ summary(average_dialogs$Mean_Dialog_Count)
 
 ```
 
+
+# Q7 : Sonuç değerlendirme, tavsiyeler
+
+### *Geçerlilik ve Mantıklılık:*
+
+Kullanılan metodoloji ve veri seti projenin ana hedefine uygun ve geçerli.
+Sonuçlar, projenin ana problemini çözme amacına uygun ve mantıklı.
+
+### *Ana Problemin Çözümü:*
+
+Projede yapılan operasyonlar ana problemi çözmekte başarılı oldu.
+Elde edilen sonuçlar, projenin ana hedefine ulaşma açısından yeterli.
+
+### *Müşteri Kullanımı:*
+
+Elde edilen sonuçlar, müşteriler veya hedef kitleniz tarafından karar almak, strateji geliştirmek veya başka bir şekilde değer yaratmak için kullanılabilir.
+Sonuçlar, iş stratejilerini optimize etmek için müşteriler tarafından nasıl uyarlanabilir.
+
+### *Kuvvetli ve Zayıf Yanlar:*
+
+Analizin güçlü yanları, kullanılan etkili analiz yöntemleri ve doğru veri seti seçimi.
+Zayıf yanlar arasında, belki de daha fazla veri toplama veya belirli bir analiz yöntemini daha derinlemesine inceleme olabilir.
+
+### *İyileştirme ve İlerleme Tavsiyeleri:*
+
+Bu çalışmayı ileride iyileştirmek için daha fazla veri toplama ve belirli analiz tekniklerini daha derinlemesine inceleme gerekebilir.
+İleride benzer projelerle uğraşacak kişilere, daha geniş bir veri seti kullanma ve daha karmaşık analiz yöntemlerini keşfetme tavsiyesinde bulunabilirsiniz.
