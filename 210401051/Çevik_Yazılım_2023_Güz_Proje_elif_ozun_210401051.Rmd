@@ -8,3 +8,13 @@ output:
 # Q1 : Problem tanımı
 
 Bu proje, web scraping teknikleri kullanarak bir stream platformu için veri setini düzenlemeyi ve güncellemeyi amaçlamaktadır. Şu anda, platform üzerinde bulunan ünlü meme'lerin hangi bölüm ve repliklerde yer aldığını tespit etmekteyim.
+
+
+# Q2 : Proje Amacı
+
+[The Office Lines](https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines/) adlı Kaggle veri setini kullanacağız. Projemizin temel amacı, platform üzerindeki popüler meme'leri belirleyerek, bu meme'lerin hangi bölüm ve repliklerde bulunduğunu **analiz etmek**. Bu analiz; indeks, karakter, satır, sezon ve bölüm numaralarını içererek hangi sezonlarda veya bölümlerde daha sık espriler yapıldığını veya hangi karakterlere daha fazla atıfta bulunulduğunu anlamamıza yardımcı olacak. Ayrıca, veri setinde potansiyel hataları belirleyip düzeltme çabalarıyla ileri düzey istatistiksel analizler yaparak detaylı raporlar oluşturmayı planlıyoruz. Bu analizler, platform üzerindeki içeriğin hangi öğelerinin daha fazla ilgi çektiğini ve izleyiciler arasında nasıl bir etki yarattığını anlamamıza katkı sağlayacak.
+
+iş problemini *web scraping* ve **data analizing** yöntemler kullanarak çözmeyi amaçlıyoruz. Bu sayede problemi azaltmayı / yok etmeyi ya da kar arttırımına katkıda bulunmayı planlıyoruz.
+
+
+
