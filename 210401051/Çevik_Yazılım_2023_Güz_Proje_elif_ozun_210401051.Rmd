@@ -198,3 +198,41 @@ Phyllis ve Andy: Phyllis ve Andy karakterlerinin ortalama ve medyan diyalog say�
 Bu çıkarımlar, her karakterin diyalog katkısının farklı olduğunu ve bazı karakterlerin diğerlerine göre daha aktif olduğunu gösteriyor.
 
 
+
+# Q6 : Veri analizi
+
+**Veri setinin düzenlenmesi ve Analiz için hazırlık**
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# Veriyi Character ve Season sütunlarına göre sırala
+myDF <- myDF[order(myDF$Character, myDF$Season), ]
+```
+
+**Ortalama Diyalog Sayılarına İlişkin Tablo Oluşturma**
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Karakter ve Sezonlara göre ortalama diyalog sayıları
+average_dialogs <- myDF %>%
+  group_by(Character, Season) %>%
+  summarise(
+    Mean_Dialog_Count = mean(Dialog_Count)
+  )
+
+View(average_dialogs)
+```
+
+**Grafikle görselleştirme:**
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# Çizgi grafiği oluştur
+ggplot(average_dialogs, aes(x = Season, y = Mean_Dialog_Count, color = Character)) +
+  geom_line() +
+  labs(title = "Karakterlerin Sezonlara Göre Ortalama Diyalog Sayilari")
+```
+**İstatistiksel analiz ve raporlama:**
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# İstatistiksel analiz
+summary(average_dialogs$Mean_Dialog_Count)
+
+```
+
