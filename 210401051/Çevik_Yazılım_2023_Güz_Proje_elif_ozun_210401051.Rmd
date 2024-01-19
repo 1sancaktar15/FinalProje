@@ -17,4 +17,64 @@ Bu proje, web scraping teknikleri kullanarak bir stream platformu için veri set
 iş problemini *web scraping* ve **data analizing** yöntemler kullanarak çözmeyi amaçlıyoruz. Bu sayede problemi azaltmayı / yok etmeyi ya da kar arttırımına katkıda bulunmayı planlıyoruz.
 
 
+# Q3 : Veri seti keşifsel analizi
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+path <- file.path("~/the-office_lines.csv")
+myDF <- readr::read_csv(path)
+```
+
+Veri seti Kaggle web sitesinden indirilmiştir ve **readr::read_csv()** fonksiyonu kullanılarak **`r class(myDF)[[1]]`** tipinde bir değişkene ithal edilmiştir. Veri boyutları aşağıdaki gibidir :
+
+-   Satir sayisi : `r nrow(myDF)`
+-   Sutun sayisi : `r ncol(myDF)`
+
+Veri setinin ön görsellemesi aşağıda verilmiştir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+myDF
+```
+
+
+#### Sezonlardaki diyalog verilerinin karakterlere göre dağılımı aşağıdaki *histogram*da gösterilmiştir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Her karakterin her sezon için kaç diyalogu olduğunu say
+dialog_counts <- myDF %>%
+ group_by(Character, Season) %>%
+ summarise(DialogCount = n())
+
+# Veriyi genişleterek eksik kombinasyonları tamamla
+all_combinations <- expand.grid(Character = unique(myDF$Character), Season = unique(myDF$Season))
+dialog_counts <- merge(all_combinations, dialog_counts, all.x = TRUE, all.y = TRUE)
+dialog_counts[is.na(dialog_counts)] <- 0
+
+# Filter for desired characters
+filtered_dialog_counts <- dialog_counts %>%
+  filter(Character %in% c("Pam", "Jim", "Dwight", "Michael", "Phyllis", "Creed", "Oscar", "Angela", "Andy", "Kevin"))
+
+# Create the histogram with the filtered data
+ggplot(filtered_dialog_counts, aes(x = Character, y = DialogCount, fill = as.factor(Season))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Character Dialogues per Season",
+       x = "Characters", y = "Number of Dialogues",
+       fill = "Seasons") +
+  theme_minimal()
+```
+
+**Season** ve **Episode_Number** sütunları *factor* tipine dönüştürülmelidir.
+
+**SORUN 1:**
+Hep bir ağızdan söylenen replikler Character sütununda All olarak geçiyor, bu satırlar dataset'den kaldırılsın.
+
+**SORUN 2:**
+Michael karakterinin "That's what she said" repliğinin bulunduğu satırın bilgilerini çek.
+
+
+
+
 
