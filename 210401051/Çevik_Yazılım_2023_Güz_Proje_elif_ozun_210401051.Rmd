@@ -139,4 +139,62 @@ thats_what_she_said_lines
 ```
 
 
+# Q5 : Veri mühendisliği
+
+**Sentetik Veri Oluşturma:**
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+set.seed(123)  # Tekrarlanabilirlik için seed ayarı
+myDF <- data.frame(
+  Character = sample(c("Pam", "Jim", "Dwight", "Michael", "Phyllis", "Creed", "Oscar", "Angela", "Andy", "Kevin"), 100, replace = TRUE),
+  Season = sample(1:10, 100, replace = TRUE),
+  Dialog_Count = rpois(100, lambda = 20)  # Poisson dağılımından rastgele değerler
+)
+
+# Veriyi Character ve Season sütunlarına göre sırala
+myDF <- myDF[order(myDF$Character, myDF$Season), ]
+
+```
+
+**Sezon ve Karaktere Göre Diyalog Sayısı:**
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+ggplot(myDF, aes(x = Season, y = Dialog_Count, color = Character)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~Character, scales = "free_y") +
+  labs(title = "Dialog Count by Season and Character")
+
+```
+
+**İstatistiksel Analiz:**
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+library(dplyr)
+
+character_stats <- myDF %>%
+  group_by(Character) %>%
+  summarise(
+    Mean_Dialog_Count = mean(Dialog_Count),
+    Median_Dialog_Count = median(Dialog_Count)
+  )
+
+print(character_stats)
+```
+### Çıkarım:
+Bu tablo, farklı karakterlerin ortalama ve medyan diyalog sayılarını içeriyor. İşte tablodan çıkarılabilecek bazı gözlemler:
+
+Michael: Michael'ın diyalog sayısı diğer karakterlere göre oldukça yüksektir, ortalama 23.17 ve medyan 22.5'tir. Bu, Michael'ın diğer karakterlere göre daha fazla konuştuğunu gösterir.
+
+Dwight ve Creed: Dwight ve Creed karakterleri de yüksek ortalama diyalog sayılarına sahiptir. Creed'in ortalama diyalog sayısı Dwight'ınkinin biraz üzerindedir.
+
+Jim ve Kevin: Jim ve Kevin karakterleri, diğerlerine göre daha düşük ortalama diyalog sayılarına sahiptir. Bu karakterlerin daha sessiz veya az konuşkan oldukları düşünülebilir.
+
+Oscar, Angela ve Pam: Bu üç karakterin ortalama diyalog sayıları birbirine oldukça yakındır. Oscar'ın medyan diyalog sayısı diğerlerinden biraz daha düşüktür.
+
+Phyllis ve Andy: Phyllis ve Andy karakterlerinin ortalama ve medyan diyalog sayıları birbirine yakın olmasına rağmen, Andy'nin ortalama diyalog sayısı biraz daha yüksektir.
+
+Bu çıkarımlar, her karakterin diyalog katkısının farklı olduğunu ve bazı karakterlerin diğerlerine göre daha aktif olduğunu gösteriyor.
+
 
